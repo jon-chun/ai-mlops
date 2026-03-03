@@ -1,0 +1,262 @@
+
+╭─── Claude Code v2.1.63 ──────────────────────────────────────────────────────╮
+│                           │ Tips for getting started                         │
+│     Welcome back Jon!     │ ✔ Run /init to create a CLAUDE.md file with ins… │
+│                           │ ──────────────────────────────────────────────── │
+│          ▐▛███▜▌          │ Recent activity                                  │
+│         ▝▜█████▛▘         │ No recent activity                               │
+│           ▘▘ ▝▝           │                                                  │
+│                           │                                                  │
+│   Opus 4.6 · Claude Max   │                                                  │
+│      ~/code/ai-mlops      │                                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+❯ /init 
+
+⏺ Searched for 6 patterns, read 4 files (ctrl+o to expand)
+
+⏺ This is a brand-new repository with just the initial scaffolding (README,
+  LICENSE, .gitignore, and a Python 3.12 venv managed by uv). There's no source
+  code yet, so I'll create a minimal but useful CLAUDE.md reflecting the current
+   state.
+
+⏺ Write(CLAUDE.md)
+  ⎿  Wrote 20 lines to CLAUDE.md
+      1 # CLAUDE.md
+      2 
+      3 This file provides guidance to Claude Code (claude.ai/code) when 
+        working with code in this repository.
+      4 
+      5 ## Project Overview
+      6 
+      7 MLOps toolkit/library focused on AI workloads. Licensed under Apa
+        che 2.0. Currently in early development with no source code yet.
+      8 
+      9 ## Environment
+     … +10 lines (ctrl+o to expand)
+
+⏺ Created CLAUDE.md. Since this repo is brand new (single initial commit, no
+  source code, no build system, no tests yet), I kept it minimal with just the
+  essentials:
+
+  - Project description
+  - Python 3.12 + uv as the package manager
+  - Setup instructions
+
+  As the project grows, this file should be updated with:
+  - Build/lint/test commands once a build system is configured
+  - Architecture overview once source code is added
+  - Any project-specific conventions that emerge
+
+✻ Brewed for 30s
+
+❯ /last30days from Reddit and X.com find the best resources and current best 
+pratices in 2026 for MLOps in general and for AI in particular 
+
+⏺ I'll research MLOps best practices for AI across Reddit, X, and the web to
+  find what's been discussed in the last 30 days.
+
+  Parsed intent:
+  - TOPIC = MLOps best practices for AI in 2026
+  - TARGET_TOOL = unknown
+  - QUERY_TYPE = RECOMMENDATIONS
+
+  Research typically takes 2-8 minutes. Starting now.
+
+⏺ Bash(python3 "${CLAUDE_PLUGIN_ROOT:-$HOME/.claude/skills/last30days}/scripts/l
+      ast30days.py" "from Reddit and X.com find the best resources and current
+      best pratices…)
+  ⎿  Running in the background (↓ to manage)
+
+⏺ Web Search("MLOps best practices 2026 AI machine learning operations")
+  ⎿  Did 1 search in 10s
+
+⏺ Web Search("MLOps tools recommendations 2026 LLMOps GenAI")
+  ⎿  Did 1 search in 13s
+
+⏺ Web Search("best MLOps platforms stack 2026 production AI deployment")
+  ⎿  Did 1 search in 9s
+
+⏺ Web Search("MLOps open source tools 2026 Kubernetes model serving monitoring")
+  ⎿  Did 1 search in 10s
+
+⏺ Web Search("LLMOps AI agent deployment production best practices 2026")
+  ⎿  Did 1 search in 8s
+
+⏺ Now let me check on the background research script.
+
+⏺ Task Output b1x0lomxl
+  ⎿  /last30days · researching: from Reddit and X.com find the best resourc
+     es and current best pratices in 2026 for MLOps in general and for AI i
+     n particular
+     … +90 lines (ctrl+o to expand)
+
+⏺ Background command "Run last30days research script for MLOps topic" completed
+(exit code 0)
+
+⏺ All research is in. Let me synthesize everything.
+
+  ---
+  What I learned:
+
+  MLOps in 2026 has split into two parallel tracks: classic MLOps and LLMOps —
+  and the community is actively debating whether they converge or stay separate.
+   The loudest signal from X is that people who skip MLOps fundamentals and jump
+   straight to agents fail, per @techNmak (1,067 likes). The practical
+  consensus: learn foundations first, then layer on LLM-specific tooling.
+
+  The "production-ready" stack has crystallized around a core set of open-source
+   tools. @kmeanskaran's 2-part guide on deploying MLOps + Agentic AI on AWS
+  (898 likes) reflects the dominant pattern: Docker + EKS (Kubernetes) +
+  Terraform + GitHub Actions CI/CD, with MLflow or W&B for tracking. FastAPI +
+  Redis + Prometheus for serving and monitoring. This isn't aspirational — it's
+  what people are actually shipping with.
+
+  LLMOps adds three new layers on top of traditional MLOps: prompt/dataset
+  versioning, evaluation & guardrails (hallucination/toxicity/bias detection),
+  and trace-level observability for agent tool calls. Langfuse (open-source) and
+   Databricks Mosaic AI are the most-discussed platforms for this, per multiple
+  web sources. The primary bottleneck in 2026 isn't building a prototype — it's
+  proving the prototype is safe for production.
+
+  Agent-based AI systems are the frontier. Production agents need a reliability
+  layer: strict read/write boundaries, memory discipline, guardrails/evals, and
+  tracing. The pattern is plan → call tools → verify outcomes. Only 17% of
+  enterprises have formal AI governance, which is the biggest gap, per ZenML and
+   OneReach.
+
+  KEY PATTERNS from the research:
+
+  1. MLflow is the de facto standard — experiment tracking, model registry, and
+  now GenAI tracing via OpenTelemetry, per multiple sources across web and X
+  2. Kubernetes-native everything — Kubeflow for orchestration, KServe for
+  serving, containerized pipelines are table stakes, per @kmeanskaran
+  3. Observability > monitoring — drift detection alone isn't enough; you need
+  distributed tracing across LLM chains, RAG retrievals, and agent tool calls,
+  per Langfuse and Evidently docs
+  4. Policy-as-code governance — automated fairness, compliance, and data
+  lineage baked into CI/CD, per KDnuggets
+  5. Start with the graviraja/MLOps-Basics repo — week-by-week curriculum
+  covering W&B, DVC, Docker, CI/CD, model packaging — the most recommended
+  learning resource, per @techwith_ram (534 likes)
+
+  Most Mentioned Tools & Platforms
+
+  ┌───────────────────┬────────────────────────────────┬───────────────────┐
+  │       Tool        │            Category            │     Mentions      │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ MLflow            │ Experiment tracking / model    │ 8+ across all     │
+  │                   │ registry                       │ sources           │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ Docker +          │ Containerization /             │ 7+                │
+  │ Kubernetes        │ orchestration                  │                   │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ Weights & Biases  │ Experiment tracking            │ 5+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ Kubeflow          │ K8s-native ML pipelines        │ 5+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ FastAPI           │ Model serving API              │ 4+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ Langfuse          │ LLM observability              │ 4+                │
+  │                   │ (open-source)                  │                   │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ KServe            │ Serverless inference on K8s    │ 3+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ Evidently         │ Drift monitoring / data        │ 3+                │
+  │                   │ quality                        │                   │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ DVC               │ Data version control           │ 3+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ Feast / Tecton    │ Feature stores                 │ 3+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ Prometheus        │ Metrics / alerting             │ 3+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ ZenML             │ MLOps framework / control      │ 3+                │
+  │                   │ plane                          │                   │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ BentoML           │ Model packaging / serving      │ 3+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ Terraform         │ Infrastructure as code         │ 2+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ AWS SageMaker     │ End-to-end cloud MLOps         │ 4+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ GCP Vertex AI     │ End-to-end cloud MLOps         │ 3+                │
+  ├───────────────────┼────────────────────────────────┼───────────────────┤
+  │ Databricks Mosaic │ Unified AI platform / LLMOps   │ 3+                │
+  │  AI               │                                │                   │
+  └───────────────────┴────────────────────────────────┴───────────────────┘
+
+  Recommended Learning Resources (from the research)
+
+  - MLOps-Basics repo — week-by-week hands-on (most recommended on X)
+  - "Practical MLOps" by Noah Gift & Alfredo Deza — per @Ai_Vaidehi's book list
+  - "ML Solutions Architect Handbook" — covers lifecycle, system design, MLOps,
+  GenAI, per @KirkDBorne
+  - Abhishek Veeramalla's MLOps zero-to-hero series — free YouTube, per
+  @lloydtheophilus
+  - roadmap.sh/mlops — community-maintained learning roadmap
+
+  ---✅ All agents reported back!
+  ├─ 🟠 Reddit: 0 threads (API auth error this cycle)
+  ├─ 🔵 X: 20 posts │ 6,400+ likes │ 1,000+ reposts (via xAI)
+  ├─ 🌐 Web: ~45 pages (supplementary)
+  └─ 🗣️ Top voices: @techNmak (1,067 likes), @ConsciousRide (909 likes),
+  @kmeanskaran (898 likes) │ KDnuggets, ZenML, Langfuse
+
+  ---
+  I'm now an expert on MLOps & LLMOps best practices for 2026. Want me to go
+  deeper? For example:
+
+  - Compare MLflow vs Weights & Biases — which one to pick for your stack
+  - Design an MLOps stack for this repo — given it's a fresh Python/uv project,
+  I can scaffold a production-ready MLOps pipeline structure
+  - Deep dive into LLMOps for agents — the observability/guardrails layer for
+  deploying AI agents
+  - Walk through the @kmeanskaran AWS deployment pattern — Docker + EKS +
+  Terraform + GitHub Actions
+
+✻ Cogitated for 2m 11s
+
+❯ expand your research into a complete, concise, clear, and well-structured 
+   report in *.md format                                                    
+
+⏺ Read 1 file (ctrl+o to expand)
+
+⏺ Write(docs/mlops-landscape-2026.md)
+  ⎿  Wrote 366 lines to docs/mlops-landscape-2026.md
+       1 # MLOps & LLMOps in 2026: A Practitioner's Guide
+       2 
+       3 > Research compiled from 20 X posts (6,400+ likes), 45+ web sour
+         ces, and community discussions.
+       4 > Date range: February 1 – March 3, 2026.
+       5 
+       6 ---
+       7 
+       8 ## Table of Contents
+       9 
+      10 1. [Executive Summary](#executive-summary)
+     … +356 lines (ctrl+o to expand)
+
+⏺ Created docs/mlops-landscape-2026.md — a comprehensive report covering:
+
+  - Executive summary of where MLOps stands in 2026
+  - Classic MLOps vs LLMOps — the two-track split and where they overlap
+  - Production stack — the actual tools people are deploying, with architecture
+  diagram
+  - Core practices — 6 non-negotiable practices (versioning, automation, eval
+  gates, monitoring, reproducibility, feature stores)
+  - Full tool landscape — 3 tiers (core, specialized, LLMOps-specific) plus
+  cloud platforms, with rationale for each
+  - LLMOps specifics — prompt versioning, evaluation/guardrails, trace-level
+  observability, the 5 pillars
+  - AI agents in production — architecture pattern, reliability layer, RAG
+  grounding
+  - Governance — policy-as-code, security for LLM systems
+  - Learning path — 4-phase progression from foundations to LLMOps with curated
+  resources
+  - Key takeaways — 7 actionable conclusions
+
+  The report is ~400 lines, concise, and structured for quick scanning or deep
+  reading.
+
+✻ Crunched for 1m 38s
